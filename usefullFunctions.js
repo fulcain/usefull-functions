@@ -49,7 +49,7 @@ function convertAnyNumberToEnglish(input, type) {
     type = type.toLowerCase()
 
     // array of numbers
-    let
+    const
         persianNumbers = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'],
         arabicNumbers = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
 
@@ -57,7 +57,7 @@ function convertAnyNumberToEnglish(input, type) {
     for (let i = 0; i < 10; i++) {
         input = input.replaceAll(persianNumbers[i], i).replaceAll(arabicNumbers[i], i);
     }
-    // if type is number this code will be executed
+    // if type is number parses the input into number
     return type === "number" ? Number(input) : input
 
 }
