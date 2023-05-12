@@ -18,4 +18,19 @@ const customStringify = (obj) => {
 	return newString;
 };
 
-
+/**
+ * 
+ * @param {*} number - a number given in either string or number
+ * @returns {Number} - a comma separated number
+ */
+function addCommaToNumber(number) {
+return Number(String(number).replace(/[^0-9]/g, '')).toLocaleString()
+}
+/**
+ * 
+ * @param {*} value - one digit number 
+ * @returns {*} - two digit number
+ */
+ function addZero(value) {
+ return value < 10 ? ('0' + value).slice(-2) : value;
+ }
