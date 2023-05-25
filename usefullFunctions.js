@@ -24,14 +24,13 @@ function convertAnyNumberToEnglish(input, type) {
 	return type === "number" ? Number(input) : input;
 }
 /**
- * a function to receive data from an API
+ * xhr api call function
  * @param {string} method - the HTTP method (e.g. `GET`, `POST`, `PUT`, etc.)
  * @param {string} url - the API endpoint URL
  * @param {object|array} data - optional data to send with the request (e.g. an object or array).
  */
-function xhrApiCall(method,url,data) {
+function xhrApiCall(method, url, data) {
 	return new Promise((resolve, reject) => {
-
 		// create xhr
 		const xhr = new XMLHttpRequest();
 
@@ -40,8 +39,7 @@ function xhrApiCall(method,url,data) {
 
 		// xhr on load function
 		xhr.onload = function () {
-
-            // if the status is in 200 - 299 range this code will be executed
+			// if the status is in 200 - 299 range this code will be executed
 			if (this.status >= 200 && this.status < 300) {
 				resolve(JSON.parse(this.response));
 			} else {
@@ -52,7 +50,7 @@ function xhrApiCall(method,url,data) {
 			}
 		};
 
-        // if there is an error while getting data
+		// if there is an error while getting data
 		xhr.onerror = function () {
 			reject({
 				status: this.status,
@@ -60,21 +58,21 @@ function xhrApiCall(method,url,data) {
 			});
 		};
 
-        // send the xhr request with an optional data parameter which is either an object or array
+		// send the xhr request with an optional data parameter which is either an object or array
 		xhr.send(JSON.stringify(data));
 	});
 }
 
-xhrApiCall("GET","https://api.namefake.com/","{name:jasem}").then(
-    (data) =>{
-        console.log(data);
-    }
-)
+xhrApiCall("GET", "https://api.namefake.com/", "{name:jasem}").then((data) => {
+	console.log(data);
+});
 
 /**
  * capitalize string method
  * @returns {string} - capitalized string
  */
 String.prototype.capitalize = function () {
-	return this.split(' ').map((word) => word = word.replace(word[0], word[0].toUpperCase())).join(' ')
+	return this.split(" ")
+		.map((word) => (word = word.replace(word[0], word[0].toUpperCase())))
+		.join(" ");
 };
