@@ -70,3 +70,11 @@ xhrApiCall("GET","https://api.namefake.com/","{name:jasem}").then(
         console.log(data);
     }
 )
+
+/**
+ * capitalize string method
+ * @returns {string} - capitalized string
+ */
+String.prototype.capitalize = function () {
+	return this.split(' ').map((word) => word = word.replace(word[0], word[0].toUpperCase())).join(' ')
+};
